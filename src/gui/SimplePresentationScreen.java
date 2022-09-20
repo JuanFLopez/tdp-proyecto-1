@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 @SuppressWarnings("serial")
 public class SimplePresentationScreen extends JFrame {
@@ -83,7 +85,7 @@ public class SimplePresentationScreen extends JFrame {
 		tabInformation.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Github URL");
-		lblNewLabel_4.setBounds(10, 141, 66, 14);
+		lblNewLabel_4.setBounds(10, 141, 63, 14);
 		tabInformation.add(lblNewLabel_4);
 		
 		Legajo = new JTextField();
@@ -112,9 +114,25 @@ public class SimplePresentationScreen extends JFrame {
 		
 		gitURL = new JTextField();
 		gitURL.setText(studentData.getGithubURL());
-		gitURL.setBounds(66, 138, 349, 20);
+		gitURL.setBounds(76, 138, 339, 20);
 		tabInformation.add(gitURL);
 		gitURL.setColumns(10);
+		
+		Calendar fecha = new GregorianCalendar();
+		String anho = Integer.toString(fecha.get(Calendar.YEAR));
+		String mes  = Integer.toString(fecha.get(Calendar.MONTH)+1);
+		String dia  = Integer.toString(fecha.get(Calendar.DATE));		
+		
+		String fechacompleta= dia+"/"+mes+"/"+anho;
+		
+		String hora = Integer.toString(fecha.get(Calendar.HOUR_OF_DAY));
+		String minuto = Integer.toString(fecha.get(Calendar.MINUTE));
+		
+		String horacompleta= hora+":"+minuto;
+		
+		JLabel fecha_hora_ejecucion = new JLabel("La ventana fue creada el dia "+fechacompleta+" a las "+horacompleta);
+		fecha_hora_ejecucion.setBounds(10, 158, 405, 14);
+		tabInformation.add(fecha_hora_ejecucion);
 		contentPane.add(tabbedPane);
 		
 		JLabel Avatar_personal = new JLabel("");
